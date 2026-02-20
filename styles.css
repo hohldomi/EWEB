@@ -1,0 +1,13 @@
+#meinButton {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#meinButton:hover {
+    background-color: #45a049;
+}
