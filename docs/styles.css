@@ -225,3 +225,16 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* Landscape Smartphone Fix */
+@media (orientation: landscape) and (max-width: 1024px) {
+    nav ul {
+        padding: 8px 20px;
+        gap: 8px;
+    }
+
+    nav a {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
