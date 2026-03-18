@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dominik Hohl | EWEB</title>
+  <meta name="description" content="Portfolio-Website von Dominik Hohl für das Modul EWEB.">
+  <title>Dominik Hohl | EWEB Portfolio</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<header>
-  <h1>Dominik Hohl</h1>
-  <p>Meine Website für das Modul EWEB</p>
+<header class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">EWEB Portfolio</p>
+    <h1>Dominik Hohl</h1>
+    <p class="hero-text">Meine Website für das Modul EWEB mit ersten Projekten, Skills und Web-Experimenten.</p>
+  </div>
 </header>
 
 <nav>
@@ -22,30 +26,30 @@
   </ul>
 </nav>
 
-<main>
+<main class="content">
 
-  <section id="about">
+  <section id="about" class="card">
     <h2>Über mich</h2>
-    <p>Ich interessiere mich für Webentwicklung und User Experience.</p>
+    <p>Ich interessiere mich für Webentwicklung, User Experience und den strukturierten Aufbau moderner Webseiten.</p>
   </section>
 
-  <section id="skills">
+  <section id="skills" class="card">
     <h2>Skills</h2>
-    <ul>
+    <ul class="skill-list">
       <li>HTML</li>
       <li>CSS</li>
       <li>JavaScript</li>
     </ul>
   </section>
 
-  <section id="projects">
+  <section id="projects" class="card">
     <h2>Projekte</h2>
-    <p>Hier erscheinen später meine Projekte aus dem Modul.</p>
+    <p>Hier erscheinen meine Projekte aus dem Studium und Berufsleben.</p>
 
     <button id="toggleButton">Mehr anzeigen</button>
 
-    <div id="extraText" style="display: none;">
-      <p>Diese Website wird im Verlauf des Semesters weiter ausgebaut.</p>
+    <div id="extraText" class="hidden-text">
+      <p>Diese Website wird im Verlauf des Semesters weiter ausgebaut und Schritt für Schritt professioneller gestaltet.</p>
     </div>
   </section>
 
