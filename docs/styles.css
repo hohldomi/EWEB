@@ -123,6 +123,22 @@ nav a:hover {
     font-weight: bold;
 }
 
+/* Experience */
+
+.experience-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.experience-list li {
+    margin-bottom: 12px;
+    padding: 10px;
+    background-color: #f8fafc;
+    border-left: 4px solid #3b82f6;
+    border-radius: 8px;
+}
+
 /* Projects */
 
 .project-grid {
@@ -229,12 +245,12 @@ footer {
 /* Landscape Smartphone Fix */
 @media (orientation: landscape) and (max-width: 1024px) {
     nav ul {
-        padding: 8px 20px;
-        gap: 8px;
+        padding: 4px 10px;
+        gap: 4px;
     }
 
     nav a {
-        padding: 6px 12px;
-        font-size: 14px;
+        padding: 4px 8px;
+        font-size: 12px;
     }
 }
