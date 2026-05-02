@@ -141,11 +141,19 @@ nav a:hover {
 
 /* Projects */
 
+/* Mobile First: Standard = 1 Spalte */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: 16px;
     margin: 24px 0;
+}
+
+/* Ab Tablet: 3 Spalten */
+@media (min-width: 768px) {
+    .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .project-card {
@@ -235,10 +243,6 @@ footer {
 
     .card {
         padding: 22px;
-    }
-
-    .project-grid {
-        grid-template-columns: 1fr;
     }
 }
 
