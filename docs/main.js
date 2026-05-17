@@ -14,11 +14,26 @@ button.addEventListener("click", function () {
     }
 });
 
+// ─── Hamburger Nav ───────────────────────────────────────────────
+const navToggle = document.getElementById("navToggle");
+const navMenu   = document.getElementById("navMenu");
+
+navToggle.addEventListener("click", function () {
+    const isOpen = navMenu.classList.toggle("open");
+    navToggle.classList.toggle("open", isOpen);
+    navToggle.setAttribute("aria-expanded", isOpen);
+});
+
+navMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        navMenu.classList.remove("open");
+        navToggle.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+    });
+});
+
 
 // ─── F1 API ──────────────────────────────────────────────────────
-// REST GET-Request auf öffentliche JSON-API (kein API-Key nötig)
-// Demonstriert: fetch(), async/await, JSON-Verarbeitung, Fehlerbehandlung
-
 const F1_API_URL = "https://api.jolpi.ca/ergast/f1/2026/driverstandings/";
 
 async function loadF1Standings() {
@@ -27,23 +42,22 @@ async function loadF1Standings() {
     const listEl    = document.getElementById("f1-standings");
 
     try {
-        // GET-Request → JSON-Response (wie in den Slides: fetch + response.json())
         const response = await fetch(F1_API_URL);
 
         if (!response.ok) {
-            throw new Error(`HTTP-Fehler: ${response.status}`);
+            errorEl.style.display = "block";
+            errorEl.textContent = `Daten konnten nicht geladen werden. (HTTP-Fehler: ${response.status})`;
+            loadingEl.style.display = "none";
+            return;
         }
 
         const data = await response.json();
 
-        // JSON-Struktur der API navigieren
         const standings = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
 
-        // Ladeanzeige ausblenden, Liste einblenden
         loadingEl.style.display = "none";
         listEl.style.display    = "block";
 
-        // Top 10 Fahrer rendern
         standings.slice(0, 10).forEach(entry => {
             const li = document.createElement("li");
             li.classList.add("f1-item");
@@ -59,7 +73,6 @@ async function loadF1Standings() {
         });
 
     } catch (error) {
-        // Fehlerbehandlung: Nutzerfreundliche Fehlermeldung anzeigen
         loadingEl.style.display = "none";
         errorEl.style.display   = "block";
         errorEl.textContent     = `Daten konnten nicht geladen werden. (${error.message})`;
@@ -67,5 +80,4 @@ async function loadF1Standings() {
     }
 }
 
-// API-Aufruf beim Laden der Seite
 loadF1Standings();
