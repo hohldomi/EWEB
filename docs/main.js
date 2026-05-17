@@ -14,6 +14,7 @@ button.addEventListener("click", function () {
     }
 });
 
+
 // ─── Hamburger Nav ───────────────────────────────────────────────
 const navToggle = document.getElementById("navToggle");
 const navMenu   = document.getElementById("navMenu");
@@ -30,6 +31,116 @@ navMenu.querySelectorAll("a").forEach(link => {
         navToggle.classList.remove("open");
         navToggle.setAttribute("aria-expanded", "false");
     });
+});
+
+
+// ─── Active Nav Highlight (IntersectionObserver) ─────────────────
+const sections = document.querySelectorAll("main section[id]");
+const navLinks = document.querySelectorAll("#navMenu a");
+
+const observerOptions = {
+    root: null,
+    rootMargin: "-40% 0px -55% 0px",
+    threshold: 0
+};
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navLinks.forEach(link => link.classList.remove("active"));
+            const activeLink = document.querySelector(`#navMenu a[href="#${entry.target.id}"]`);
+            if (activeLink) activeLink.classList.add("active");
+        }
+    });
+}, observerOptions);
+
+sections.forEach(section => sectionObserver.observe(section));
+
+
+// ─── Skill Bars Animation ─────────────────────────────────────────
+const skillBars = document.querySelectorAll(".skill-bar-fill");
+
+const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const bar = entry.target;
+            bar.style.width = bar.dataset.width + "%";
+            skillObserver.unobserve(bar);
+        }
+    });
+}, { threshold: 0.3 });
+
+skillBars.forEach(bar => skillObserver.observe(bar));
+
+
+// ─── Kontaktformular Validierung ──────────────────────────────────
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name    = document.getElementById("contactName");
+    const email   = document.getElementById("contactEmail");
+    const message = document.getElementById("contactMessage");
+    const success = document.getElementById("formSuccess");
+
+    const nameError    = document.getElementById("nameError");
+    const emailError   = document.getElementById("emailError");
+    const messageError = document.getElementById("messageError");
+
+    let valid = true;
+
+    // Name
+    if (name.value.trim() === "") {
+        name.classList.add("invalid");
+        nameError.classList.add("visible");
+        valid = false;
+    } else {
+        name.classList.remove("invalid");
+        nameError.classList.remove("visible");
+    }
+
+    // E-Mail
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.value.trim())) {
+        email.classList.add("invalid");
+        emailError.classList.add("visible");
+        valid = false;
+    } else {
+        email.classList.remove("invalid");
+        emailError.classList.remove("visible");
+    }
+
+    // Nachricht
+    if (message.value.trim() === "") {
+        message.classList.add("invalid");
+        messageError.classList.add("visible");
+        valid = false;
+    } else {
+        message.classList.remove("invalid");
+        messageError.classList.remove("visible");
+    }
+
+    if (valid) {
+        success.style.display = "block";
+        contactForm.reset();
+    }
+});
+
+
+// ─── Scroll-to-top Button ─────────────────────────────────────────
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        scrollTopBtn.classList.add("visible");
+    } else {
+        scrollTopBtn.classList.remove("visible");
+    }
+});
+
+scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 

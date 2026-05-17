@@ -67,16 +67,72 @@
 
   <section id="skills" class="card">
     <h2>Skills</h2>
-    <ul class="skill-list">
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>JavaScript</li>
-      <li>Python</li>
-      <li>Markdown</li>
-      <li>Figma</li>
-      <li>Jira</li>
-      <li>RStudio</li>
-    </ul>
+    <div class="skill-bars">
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span>HTML</span><span>85%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="85"></div>
+        </div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span>CSS</span><span>75%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="75"></div>
+        </div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span>JavaScript</span><span>70%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="70"></div>
+        </div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span>Python</span><span>60%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="60"></div>
+        </div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span>Markdown</span><span>95%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="95"></div>
+        </div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span>Figma</span><span>70%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="70"></div>
+        </div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span>Jira</span><span>75%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="75"></div>
+        </div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span>RStudio</span><span>40%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="40"></div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="projects" class="card">
@@ -127,17 +183,46 @@
     <ol id="f1-standings" style="display: none; padding-left: 0; list-style: none; margin: 0;"></ol>
   </section>
 
+  <!-- Kontaktformular -->
+  <section id="contact" class="card">
+    <h2>Kontakt</h2>
+    <form id="contactForm" novalidate>
+      <div class="form-group">
+        <label for="contactName">Name</label>
+        <input type="text" id="contactName" placeholder="Dein Name" autocomplete="name">
+        <span class="form-error" id="nameError">Bitte einen Namen eingeben.</span>
+      </div>
+      <div class="form-group">
+        <label for="contactEmail">E-Mail</label>
+        <input type="email" id="contactEmail" placeholder="deine@email.ch" autocomplete="email">
+        <span class="form-error" id="emailError">Bitte eine gültige E-Mail-Adresse eingeben.</span>
+      </div>
+      <div class="form-group">
+        <label for="contactMessage">Nachricht</label>
+        <textarea id="contactMessage" rows="4" placeholder="Deine Nachricht…"></textarea>
+        <span class="form-error" id="messageError">Bitte eine Nachricht eingeben.</span>
+      </div>
+      <button type="submit" id="contactSubmit">Nachricht senden</button>
+      <p id="formSuccess" class="form-success" style="display:none;">Danke! Deine Nachricht wurde erfolgreich gesendet.</p>
+    </form>
+  </section>
+
 </main>
 
 <footer>
   <p>© 2026 Dominik Hohl</p>
-  <a href="https://github.com/hohldomi" target="_blank" rel="noopener" aria-label="GitHub">
-    <img src="github.svg" alt="GitHub" width="28" height="28">
-  </a>
-  <a href="https://www.instagram.com/dominik_hohl/" target="_blank" rel="noopener" aria-label="Instagram">
-    <img src="instagram.svg" alt="Instagram" width="28" height="28">
-  </a>
+  <div class="footer-icons">
+    <a href="https://github.com/hohldomi" target="_blank" rel="noopener" aria-label="GitHub">
+      <img src="github.svg" alt="GitHub" width="28" height="28">
+    </a>
+    <a href="https://www.instagram.com/dominik_hohl/" target="_blank" rel="noopener" aria-label="Instagram">
+      <img src="instagram.svg" alt="Instagram" width="28" height="28">
+    </a>
+  </div>
 </footer>
+
+<!-- Scroll-to-top Button -->
+<button id="scrollTopBtn" aria-label="Nach oben scrollen" title="Nach oben">&#8679;</button>
 
 <script src="main.js" defer></script>
 

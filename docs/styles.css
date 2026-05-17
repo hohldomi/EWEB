@@ -79,9 +79,14 @@ nav a {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-nav a:hover {
+nav a:hover,
+nav a.active {
     background-color: #e8eefc;
     color: #1f3c88;
+}
+
+nav a.active {
+    border-bottom: 2px solid #1f3c88;
 }
 
 /* Hamburger Button — nur auf Mobile sichtbar */
@@ -134,23 +139,40 @@ nav a:hover {
     color: #1f3c88;
 }
 
-/* Skills */
+/* Skill Bars */
 
-.skill-list {
-    list-style: none;
+.skill-bars {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 0;
-    margin: 0;
+    flex-direction: column;
+    gap: 14px;
 }
 
-.skill-list li {
-    background-color: #e8eefc;
-    color: #1f3c88;
-    padding: 10px 14px;
-    border-radius: 999px;
+.skill-bar-item {
+    width: 100%;
+}
+
+.skill-bar-header {
+    display: flex;
+    justify-content: space-between;
     font-weight: bold;
+    margin-bottom: 6px;
+    color: #1f2937;
+}
+
+.skill-bar-track {
+    width: 100%;
+    background-color: #e8eefc;
+    border-radius: 999px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #1f3c88, #3b82f6);
+    border-radius: 999px;
+    transition: width 1s ease;
 }
 
 /* Experience */
@@ -171,7 +193,6 @@ nav a:hover {
 
 /* Projects */
 
-/* Mobile First: Standard = 1 Spalte */
 .project-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -179,7 +200,6 @@ nav a:hover {
     margin: 24px 0;
 }
 
-/* Ab Tablet: 3 Spalten */
 @media (min-width: 768px) {
     .project-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -239,12 +259,124 @@ button:hover {
     border-radius: 10px;
 }
 
+/* Kontaktformular */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #1f2937;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #f8fafc;
+    transition: border-color 0.2s ease;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+.form-group input.invalid,
+.form-group textarea.invalid {
+    border-color: #dc2626;
+}
+
+.form-error {
+    display: none;
+    color: #dc2626;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+.form-error.visible {
+    display: block;
+}
+
+.form-success {
+    margin-top: 12px;
+    color: #16a34a;
+    font-weight: bold;
+}
+
 /* Footer */
 
 footer {
     text-align: center;
     color: #6b7280;
     padding: 10px 20px 40px;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 12px;
+}
+
+.footer-icons a {
+    color: #6b7280;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.footer-icons a:hover {
+    transform: translateY(-3px);
+}
+
+.footer-icons a[aria-label="GitHub"]:hover {
+    color: #1f2937;
+}
+
+.footer-icons a[aria-label="Instagram"]:hover {
+    color: #e1306c;
+}
+
+/* Scroll-to-top Button */
+
+#scrollTopBtn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background-color: #1f3c88;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+    transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.3s ease;
+    z-index: 100;
+    padding: 0;
+}
+
+#scrollTopBtn.visible {
+    display: flex;
+}
+
+#scrollTopBtn:hover {
+    background-color: #16306f;
+    transform: translateY(-2px);
 }
 
 /* Responsive */
