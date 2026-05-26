@@ -73,16 +73,17 @@ const skillObserver = new IntersectionObserver((entries) => {
 skillBars.forEach(bar => skillObserver.observe(bar));
 
 
-// ─── Kontaktformular Validierung ──────────────────────────────────
+// ─── Kontaktformular Validierung & E-Mail-Versand ─────────────────
 const contactForm = document.getElementById("contactForm");
 
-contactForm.addEventListener("submit", function (e) {
+contactForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const name    = document.getElementById("contactName");
     const email   = document.getElementById("contactEmail");
     const message = document.getElementById("contactMessage");
     const success = document.getElementById("formSuccess");
+    const submitBtn = document.getElementById("contactSubmit");
 
     const nameError    = document.getElementById("nameError");
     const emailError   = document.getElementById("emailError");
@@ -122,8 +123,28 @@ contactForm.addEventListener("submit", function (e) {
     }
 
     if (valid) {
-        success.style.display = "block";
-        contactForm.reset();
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Wird gesendet…";
+
+        try {
+            const response = await fetch("https://formspree.io/f/meedrdkr", {
+                method: "POST",
+                headers: { "Accept": "application/json" },
+                body: new FormData(contactForm)
+            });
+
+            if (response.ok) {
+                success.style.display = "block";
+                contactForm.reset();
+            } else {
+                alert("Fehler beim Senden. Bitte versuche es erneut.");
+            }
+        } catch (err) {
+            alert("Netzwerkfehler. Bitte prüfe deine Verbindung.");
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Nachricht senden";
+        }
     }
 });
 
