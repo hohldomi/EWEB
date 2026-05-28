@@ -190,17 +190,17 @@
     <form id="contactForm" novalidate>
       <div class="form-group">
         <label for="contactName">Name</label>
-        <input type="text" id="contactName" placeholder="Dein Name" autocomplete="name">
+        <input type="text" id="contactName" name="name" placeholder="Dein Name" autocomplete="name">
         <span class="form-error" id="nameError">Bitte einen Namen eingeben.</span>
       </div>
       <div class="form-group">
         <label for="contactEmail">E-Mail</label>
-        <input type="email" id="contactEmail" placeholder="deine@email.ch" autocomplete="email">
+        <input type="email" id="contactEmail" name="email" placeholder="deine@email.ch" autocomplete="email">
         <span class="form-error" id="emailError">Bitte eine gültige E-Mail-Adresse eingeben.</span>
       </div>
       <div class="form-group">
         <label for="contactMessage">Nachricht</label>
-        <textarea id="contactMessage" rows="4" placeholder="Deine Nachricht…"></textarea>
+        <textarea id="contactMessage" name="message" rows="4" placeholder="Deine Nachricht…"></textarea>
         <span class="form-error" id="messageError">Bitte eine Nachricht eingeben.</span>
       </div>
       <button type="submit" id="contactSubmit">Nachricht senden</button>
